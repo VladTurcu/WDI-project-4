@@ -13,8 +13,11 @@ class CoursesShow extends React.Component{
     currentTest: null,
     lessonIndex: 0,
     selectedAnswer: '',
+    correctAnswers: 0,
+    questions: 0,
     stage: 1,
-    courseEnd: false
+    courseEnd: false,
+    user: null
   }
   componentWillMount() {
     Axios
@@ -23,6 +26,8 @@ class CoursesShow extends React.Component{
         this.setState({ course: res.data }, () => this.getNextLesson());
       })
       .catch(err => console.log(err));
+    console.log('componentWillMount >>>', Auth.getCurrentUser());
+
   }
 
 
@@ -41,6 +46,7 @@ class CoursesShow extends React.Component{
   nextLesson = () => {
     if(this.state.selectedAnswer === this.state.currentTest.answer){
       return this.getNextLesson();
+
     } else {
       alert('Wrong answer');
     }
@@ -52,16 +58,24 @@ class CoursesShow extends React.Component{
 
   testSubmit = () => {
     // check user's answer.. allocated score
+    const questions = this.state.questions + 1;
+    this.setState({questions});
     if(this.state.lessonIndex === this.state.course.lessons.length){
       this.setState({ courseEnd: true});
     } else {
       this.nextLesson();
       console.log('Next Lesson');
     }
+
+
+    if(this.state.selectedAnswer === this.state.currentTest.answer){
+      const correctAnswers = this.state.correctAnswers + 1;
+      this.setState({ correctAnswers});
+    }
   }
 
   render(){
-    console.log('User app here vlad you are right >>', Auth.getCurrentUser());
+    console.log('answers  >>',  this.state.questions);
     return(
       <div>
         <h1>{this.state.course.title}</h1>
@@ -83,7 +97,7 @@ class CoursesShow extends React.Component{
           />
           </div>}
 
-        {this.state.courseEnd && <CourseEnd />}
+        {this.state.courseEnd && <CourseEnd state={this.state} />}
       </div>
     );
   }

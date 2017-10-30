@@ -11,7 +11,6 @@ class Auth {
 
   static setCurrentUser(user){
     this.currentUser = user;
-    console.log('setCurrentUser >>', user);
   }
 
   static getCurrentUser() {

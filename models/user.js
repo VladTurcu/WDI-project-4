@@ -1,12 +1,11 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
-// const courseSchema = new mongoose.Schema({
-//   currentCourse: [{
-//     courseId: {type: String, required: false},
-//     stage: {type: String, required: false}
-//   }],
-//   courses: {type: String, required: false}
-// });
+
+
+const achievementSchema = new mongoose.Schema({
+  course: { type: String, required: false },
+  score: { type: String, required: false }
+});
 
 
 const userSchema = new mongoose.Schema({
@@ -15,7 +14,8 @@ const userSchema = new mongoose.Schema({
   username: { type: String, required: true },
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
-  selectedAnswer: { type: String, required: false }
+  selectedAnswer: { type: String, required: false },
+  achievements: [ achievementSchema ]
 });
 
 userSchema
@@ -25,7 +25,7 @@ userSchema
   });
 
 userSchema.pre('validate', function checkPassword(next) {
-  if(!this._passwordConfirmation || this._passwordConfirmation !== this.password) {
+  if(this.isModified('password') && this._passwordConfirmation !== this.password) {
     this.invalidate('passwordConfirmation', 'Passwords do not match');
   }
   next();

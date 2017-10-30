@@ -42,9 +42,21 @@ function usersIndex(req, res, next) {
 }
 
 
+function achievementCreate(req, res, next) {
+  const achievement = req.currentUser.achievements.create(req.body);
+  req.currentUser.achievements.push(achievement);
+
+  req.currentUser.save()
+    .then(achievement => res.status(201).json(achievement))
+    .catch(next);
+}
+
+
+
 module.exports = {
   register,
   login,
   usersIndex,
-  userShow
+  userShow,
+  achievementCreate
 };

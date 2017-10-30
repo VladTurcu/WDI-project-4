@@ -25,6 +25,9 @@ router.route('/users/:id')
 router.route('/users')
   .get(auth.usersIndex);
 
+router.route('/achievements')
+  .post(secureRoute, auth.achievementCreate);
+
 router.all('/*', (req, res) => res.notFound());
 
 

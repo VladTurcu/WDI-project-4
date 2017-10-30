@@ -1,20 +1,18 @@
 import React from 'react';
-// import Axios from 'axios';
-// import LessonShow from './lessons/LessonShow';
-// import TestsShow from './tests/TestsShow';
+import Auth from '../../lib/Auth';
+import  AddAchievement from './achievements/AddAchievements';
 
 
-class CoursesShow extends React.Component{
+const CoursesShow = ({state}) => {
+  console.log('course end', state);
+  return(
+    <div className="container">
+      <h1>Well done {Auth.currentUser.firstname}!</h1>
+      <h3>You passed this course with {state.correctAnswers}/{state.questions} correct answers!</h3>
+      <AddAchievement score={state} />
+    </div>
+  );
+};
 
-
-  render(){
-    return(
-      <div>
-        <h1>Well done !!!</h1>
-        <h2>The Somellier Basics certification has been send to you via email</h2>
-      </div>
-    );
-  }
-}
 
 export default CoursesShow;
