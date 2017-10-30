@@ -1,5 +1,6 @@
 const Course = require('../models/course');
 
+
 function courseIndex(req, res, next) {
   Course
     .find()
