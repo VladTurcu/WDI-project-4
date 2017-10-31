@@ -3,7 +3,6 @@ import Axios from 'axios';
 import LessonShow from './lessons/LessonShow';
 import TestsShow from './tests/TestsShow';
 import CourseEnd from './CourseEnd';
-import Auth from '../../lib/Auth';
 
 
 class CoursesShow extends React.Component{
@@ -14,10 +13,9 @@ class CoursesShow extends React.Component{
     lessonIndex: 0,
     selectedAnswer: '',
     correctAnswers: 0,
-    questions: 0,
+    testIndex: 0,
     stage: 1,
-    courseEnd: false,
-    user: null
+    courseEnd: false
   }
   componentWillMount() {
     Axios
@@ -26,15 +24,19 @@ class CoursesShow extends React.Component{
         this.setState({ course: res.data }, () => this.getNextLesson());
       })
       .catch(err => console.log(err));
-    console.log('componentWillMount >>>', Auth.getCurrentUser());
-
   }
 
-
   getNextLesson = () => {
-    if(this.state.currentLesson && this.state.currentLesson.isEndOfStage) return this.getNextTest();
+    if(this.state.lessonIndex > this.state.course.lessons.length) return this.setState({ courseEnd: true });
     const currentLesson = this.state.course.lessons[this.state.lessonIndex];
+    const prevLesson = this.state.course.lessons[this.state.lessonIndex - 1];
     const lessonIndex = this.state.lessonIndex + 1;
+    if(!currentLesson ||  prevLesson && prevLesson.stage < currentLesson.stage) {
+      console.log('lesson index >>>', lessonIndex);
+      this.setState({ lessonIndex });
+      return this.getNextTest();
+    }
+    console.log('setting lesson...');
     this.setState({ currentLesson, lessonIndex, currentTest: null, stage: currentLesson.stage });
   }
 
@@ -43,39 +45,23 @@ class CoursesShow extends React.Component{
     this.setState({ currentTest, currentLesson: null });
   }
 
-  nextLesson = () => {
-    if(this.state.selectedAnswer === this.state.currentTest.answer){
-      return this.getNextLesson();
-
-    } else {
-      alert('Wrong answer');
-    }
-  }
-
   handleSelectAnswer = (answer) => {
     this.setState({ selectedAnswer: answer });
   }
 
   testSubmit = () => {
-    // check user's answer.. allocated score
-    const questions = this.state.questions + 1;
-    this.setState({questions});
-    if(this.state.lessonIndex === this.state.course.lessons.length){
-      this.setState({ courseEnd: true});
-    } else {
-      this.nextLesson();
-      console.log('Next Lesson');
-    }
+    this.getNextLesson();
+    const correctAnswers = this.state.correctAnswers + 1;
+    if(this.state.selectedAnswer === this.state.currentTest.answer) this.setState({ correctAnswers, testIndex: this.state.testIndex + 1});
+    const stage = this.state.stage + 1;
+    this.setState({stage});
+    // const correctAnswers = this.state.selectedAnswer === this.state.currentTest.answer ? correctAnswers + 1 : correctAnswers;
 
 
-    if(this.state.selectedAnswer === this.state.currentTest.answer){
-      const correctAnswers = this.state.correctAnswers + 1;
-      this.setState({ correctAnswers});
-    }
   }
 
   render(){
-    console.log('answers  >>',  this.state.questions);
+    console.log('the state >>>> ', this.state.correctAnswers);
     return(
       <div>
         <h1>{this.state.course.title}</h1>

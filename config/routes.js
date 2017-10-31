@@ -5,12 +5,12 @@ const secureRoute = require('../lib/secureRoute');
 
 router.route('/courses')
   .get(courses.courseIndex)
-  .post(courses.courseCreate);
+  .post(secureRoute, courses.courseCreate);
 
 router.route('/courses/:id')
   .get(courses.courseShow)
-  .put(courses.courseUpdate)
-  .delete(courses.courseDelete);
+  .put(secureRoute, courses.courseUpdate)
+  .delete(secureRoute, courses.courseDelete);
 
 router.route('/register')
   .post(auth.register);
@@ -19,7 +19,6 @@ router.route('/login')
   .post(auth.login);
 
 router.route('/users/:id')
-//   .put(auth.userUpdate)
   .get(secureRoute, auth.userShow);
 
 router.route('/users')
@@ -27,6 +26,9 @@ router.route('/users')
 
 router.route('/achievements')
   .post(secureRoute, auth.achievementCreate);
+
+router.route('/users/:id')
+  .put(secureRoute, auth.achievementUpdate);
 
 router.all('/*', (req, res) => res.notFound());
 

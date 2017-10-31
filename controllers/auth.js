@@ -53,10 +53,29 @@ function achievementCreate(req, res, next) {
 
 
 
+
+function achievementUpdate(req, res, next) {
+  User
+    .findById(req.params.id)
+    .exec()
+    .then((achievement) => {
+      if(!achievement) return res.notFound();
+      achievement = Object.assign(achievement, req.body);
+      return achievement.save();
+    })
+    .then(achievement => res.json(achievement))
+    .catch(next);
+}
+
+
+
+
+
 module.exports = {
   register,
   login,
   usersIndex,
   userShow,
-  achievementCreate
+  achievementCreate,
+  achievementUpdate
 };

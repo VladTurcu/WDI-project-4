@@ -19,8 +19,7 @@ const courseData = [{
     stage: 1,
     title: 'How is wine made?',
     content: 'Mosthly wine harvest includes these basic vine-to-wine steps: 1.	Pick the grapes  2.	Crush the grapes  3.	Ferment the grapes into wine Pick up the grapes  The grapes are either cut from the vine by human hands with shears or they are removed by a machine. It is important that they are properly ripe. Too ripe or not ripe enough the wine will suffer(you can make bad wine from good grapes, but not a good wine from bad grapes). The grapes are collected in bins or lugs and then transported to the winery where they will be sorted for quality(Removing rotten or raisined grapes). After sorting they go into a machine that removes the stem and crushes them.                                                                                                         Crush the grapes                                                                                                                  The crush literally gets the grape’s juices flowing and is the first step in the process that turns fresh, delicate fruit into delicious, shelf-stable wine. As grape skins are broken                                                                           Fermentation                                                                                                                         The fermentation process turns the sweet grape juice in the alcoholic beverage we call wine.  During this process the yeast turns the sugar into alcohol and carbon dioxide. When the alcohol level reaches 15% the yeast cells dies and all the sugar left remains into the wine. The fermentation process can be stopped by cooling down the tanks or thru a chemical process. Fermentation can be done in stainless steel vats, in a open Wooden vat, inside a wine barrel and inside the wine bottle itself.',
-    image: 'https://images.unsplash.com/photo-1474722883778-792e7990302f?dpr=1&auto=format&fit=crop&w=1000&q=80&cs=tinysrgb&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D',
-    isEndOfStage: true
+    image: 'https://images.unsplash.com/photo-1474722883778-792e7990302f?dpr=1&auto=format&fit=crop&w=1000&q=80&cs=tinysrgb&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D'
   }, {
     stage: 2,
     title: 'White wine',
@@ -35,8 +34,7 @@ const courseData = [{
     stage: 2,
     title: 'Rosé wine',
     content: 'The rosé wine is a type of wine that incorporates some of the colour from the grape skin. During the fermentation process the skins are allowed to remain in contact with the juice for a short period, typically one to three days.',
-    image: 'https://images.unsplash.com/photo-1474722883778-792e7990302f?dpr=1&auto=format&fit=crop&w=1000&q=80&cs=tinysrgb&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D',
-    isEndOfStage: true
+    image: 'https://images.unsplash.com/photo-1474722883778-792e7990302f?dpr=1&auto=format&fit=crop&w=1000&q=80&cs=tinysrgb&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D'
   }, {
     stage: 3,
     title: 'Dry wine',
@@ -46,8 +44,7 @@ const courseData = [{
     stage: 3,
     title: 'Sparkling wine',
     content: 'Sparkling wine is a wine with significant levels of carbon dioxide in it, making it fizzy. The best known example of a sparkling wine is champagne, which is exclusively produced in the Champagne region of France. Usually sparkling wine is white or rosé, but there are examples of red sparkling wines such as the Italian Brachetto, the Italian Bonarda, Australian sparkling Shiraz, and Azerbaijani "Pearl of Azerbaijan" made from Madrasa grapes. The sweetness of sparkling wine can range from very dry "brut" styles to sweeter "doux" varieties (from the French words for "raw" and "sweet", respectively).[1] The sparkling quality of these wines comes from its carbon dioxide content and may be the result of natural fermentation, either in a bottle, as with the traditional methode, in a large tank designed to withstand the pressures involved (as in the Charmat process), or as a result of simple carbon dioxide injection in some cheaper sparkling wines.',
-    image: 'https://images.unsplash.com/photo-1474722883778-792e7990302f?dpr=1&auto=format&fit=crop&w=1000&q=80&cs=tinysrgb&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D',
-    isEndOfStage: true
+    image: 'https://images.unsplash.com/photo-1474722883778-792e7990302f?dpr=1&auto=format&fit=crop&w=1000&q=80&cs=tinysrgb&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D'
   }],
   tests: [{
     stage: 1,

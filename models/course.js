@@ -4,8 +4,7 @@ const lessonSchema = new mongoose.Schema({
   stage: { type: Number, required: true },
   title: { type: String, required: true },
   content: { type: String, required: true },
-  image: { type: String, required: false },
-  isEndOfStage: { type: Boolean, default: false }
+  image: { type: String, required: false }
 });
 
 const testSchema = new mongoose.Schema({
@@ -18,8 +17,8 @@ const testSchema = new mongoose.Schema({
 const courseSchema = new mongoose.Schema({
   title: { type: String, required: true },
   image: { type: String, required: true},
-  category: { type: String, required: true },
-  description: { type: String, required: true },
+  category: { type: String, required: false },
+  description: { type: String, required: false },
   lessons: [ lessonSchema ],
   tests: [ testSchema ]
 });

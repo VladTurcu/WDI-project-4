@@ -13,6 +13,8 @@ class  AddAchievement extends React.Component {
     errors: {}
   };
 
+
+
   componentWillMount() {
     if(this.state.achievements){
       Axios.post('/api/achievements', this.state.achievements, {
@@ -20,12 +22,8 @@ class  AddAchievement extends React.Component {
       })
         .then(() => console.log('Achievement posted'))
         .catch((err) => this.setState({ errors: err.response.data.errors }));
-    } else {
-      console.log('Are achievements');
     }
-
   }
-
 
 
   render() {
