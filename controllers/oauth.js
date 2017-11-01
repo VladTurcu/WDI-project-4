@@ -19,7 +19,7 @@ function facebook(req, res, next) {
     .then(token => {
       return rp({
         method: 'GET',
-        url: 'https://graph.facebook.com/v2.5/me?fields=id,email,name,picture',
+        url: 'https://graph.facebook.com/v2.5/me?fields=id,email,name,picture,first_name,last_name',
         qs: token,
         json: true
       });
@@ -31,7 +31,10 @@ function facebook(req, res, next) {
         .then(user => {
           if(!user) {
             user = new User({
+              firstname: profile.first_name,
+              lastname: profile.last_name,
               username: profile.name,
+              email: profile.email,
               facebookId: profile.id,
               image: profile.picture.data.url
             });
@@ -50,4 +53,4 @@ function facebook(req, res, next) {
     .catch(next);
 }
 
-module.exports = { github, facebook };
+module.exports = { facebook };

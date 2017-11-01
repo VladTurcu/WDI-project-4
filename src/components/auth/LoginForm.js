@@ -1,9 +1,10 @@
 import React from 'react';
+import OAuthButton from './OAuthButton';
 
 const LoginForm = ({ handleChange, handleSubmit, credentials }) => {
   return (
-    <form onSubmit={handleSubmit}>
-      <div className="form-group">
+    <form className="row" onSubmit={handleSubmit}>
+      <div className="form-group col-md-4">
         <input
           type="text"
           name="email"
@@ -13,7 +14,7 @@ const LoginForm = ({ handleChange, handleSubmit, credentials }) => {
           className="form-control"
         />
       </div>
-      <div className="form-group">
+      <div className="form-group col-md-4">
         <input
           type="password"
           name="password"
@@ -23,7 +24,10 @@ const LoginForm = ({ handleChange, handleSubmit, credentials }) => {
           className="form-control"
         />
       </div>
-      <button className="btn btn-primary">Login</button>
+      <div className="form-group col-md-4">
+        <button className="nav-item btn-link"><i className="fa fa-sign-in" aria-hidden="true"></i></button>
+        <OAuthButton provider="facebook"><i className="fa fa-facebook" aria-hidden="true"></i></OAuthButton>
+      </div>
     </form>
   );
 };

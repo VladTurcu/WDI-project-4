@@ -3,6 +3,7 @@ import Axios from 'axios';
 import LessonShow from './lessons/LessonShow';
 import TestsShow from './tests/TestsShow';
 import CourseEnd from './CourseEnd';
+import ProfileCard from '../auth/ProfileCard';
 
 
 class CoursesShow extends React.Component{
@@ -15,7 +16,10 @@ class CoursesShow extends React.Component{
     correctAnswers: 0,
     testIndex: 0,
     stage: 1,
-    courseEnd: false
+    courseEnd: false,
+    active: false,
+    class: ''
+
   }
   componentWillMount() {
     Axios
@@ -48,6 +52,11 @@ class CoursesShow extends React.Component{
   handleSelectAnswer = (answer) => {
     this.setState({ selectedAnswer: answer });
   }
+  // 
+  // handleClass = (i) => {
+  //   this.setState({ class: i });
+  //   console.log('this is the class >>', this.state.class);
+  // }
 
   testSubmit = () => {
     this.getNextLesson();
@@ -56,34 +65,39 @@ class CoursesShow extends React.Component{
     const stage = this.state.stage + 1;
     this.setState({stage});
     // const correctAnswers = this.state.selectedAnswer === this.state.currentTest.answer ? correctAnswers + 1 : correctAnswers;
-
-
   }
 
+
   render(){
-    console.log('the state >>>> ', this.state.correctAnswers);
+
     return(
-      <div>
-        <h1>{this.state.course.title}</h1>
-        <h2>{this.state.course.description}</h2>
+      <div className="row">
+        <div className="col-md-9">
+          {/* <h1>{this.state.course.title}</h1>
+          <h2>{this.state.course.description}</h2> */}
 
-        {this.state.currentLesson &&
-        <div>
-          <LessonShow
-            currentLesson={this.state.currentLesson}
-            getNextLesson={this.getNextLesson}
-          />
-        </div>}
+          {this.state.currentLesson &&
+            <div>
+              <LessonShow
+                currentLesson={this.state.currentLesson}
+                getNextLesson={this.getNextLesson}
+              />
+            </div>}
 
-        {this.state.currentTest && !this.state.courseEnd &&
-          <div><TestsShow
-            test={this.state.currentTest}
-            handleSelectAnswer={this.handleSelectAnswer}
-            testSubmit={this.testSubmit}
-          />
-          </div>}
-
-        {this.state.courseEnd && <CourseEnd state={this.state} />}
+          {this.state.currentTest && !this.state.courseEnd &&
+              <div><TestsShow
+                test={this.state.currentTest}
+                handleSelectAnswer={this.handleSelectAnswer}
+                testSubmit={this.testSubmit}
+                handleClass={this.handleClass}
+                state={this.state}
+              />
+              </div>}
+          {this.state.courseEnd && <CourseEnd state={this.state} />}
+        </div>
+        <div className="col-md-3">
+          <ProfileCard />
+        </div>
       </div>
     );
   }

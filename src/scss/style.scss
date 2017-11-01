@@ -1,76 +1,63 @@
 @import 'color_variables';
+@import 'override-bootstrap';
+@import 'drag-drop-image-upload';
+@import 'navbar';
+@import 'customs';
 
 body {
   background-color: $background;
+  font-family: 'Dosis', sans-serif;
+  font-size: 18px;
+  font-weight: lighter;
 }
 
 main {
   padding: 10px;
-}
-.navbar {
-  background-color: $dark-grey;
-}
-
-.container {
+  width: 99%;
   background-color: white;
+  margin-top: -100px;
 }
 
-.card-custom-avatar img {
-  border-radius: 50%;
-  box-shadow: 0 0 15px rgba(10, 10, 10, 0.3);
-  position: absolute;
-  bottom: 20px;
-  right: 2.25rem;
-  width: 80px;
-  height: 80px;
-}
-
-.img-card {
-  width: 100%;
-}
-
-.card-body {
-  position: absolute;
-  bottom: 20px;
-  left: 2.25rem;
-}
-
-.row-main {
-  margin: 0 auto;
-  padding: 15px;
-}
-
-.row-main .col-md-6 {
-padding-left: 0;
-padding-right: 0;
-}
-
-.col-main {
-  transition:0.5s;
-}
-
-.col-main a{
-  transition:0.3s;
-  color: #ffffff;
-
-}
-.col-main a:hover {
-  opacity: 1;
-  font-size: 34px;
-
-}
-.col-main:hover {
-  opacity: 0.7;
+.index-card {
+  width: 20rem;
 }
 
 
-
-.preview-img{
-  width: 250px;
-}
-
-.lesson-new {
+.add-new {
   padding: 10px;
-  margin: 10px auto;
-  background-color: lightGrey;
+  margin: 20px auto;
+  background-color: $background;
+  @extend .box-shadow;
+  @extend .border-radius;
+}
+
+.card-img-top {
+  height: 150px;
+}
+
+
+.card-block {
+  width: 100%;
+  margin-top: -70px;
+}
+
+.profile-card-img{
+  margin-bottom: 20px;
+  width: 100px;
+  border-radius: 50%;
+}
+
+.lesson-content {
+  margin: 20px auto;
+}
+
+.test-label {
+  margin-left: 10px;
+  // opacity: 0;
+}
+
+.btn-answer{
+  width: 60%;
+  padding:10px;
+  @extend .border-radius;
 }

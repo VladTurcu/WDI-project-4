@@ -16,82 +16,21 @@ class CoursesIndex extends React.Component {
 
   render() {
     return (
-      <div>
-        <div className="row row-main">
-          <div className="col col-main col-md-6">
-            {this.state.courses.map((course, i) =>
-              <div key={i}>
-                <Link to={`/courses/${course.id}`}>
-                  <div className="card card-custom bg-white border-white border-0">
-                    <img className="img-card" src={course.image} />
-                    <div className="card-custom-avatar">
-                      <img className="img-fluid" src="http://res.cloudinary.com/d3/image/upload/c_pad,g_center,h_200,q_auto:eco,w_200/bootstrap-logo_u3c8dx.jpg" alt="Avatar" />
-                    </div>
-                    <div className="card-body" >
-                      <p className="card-title">{course.title}</p>
-                      <h4 className="card-text">{course.description}</h4>
-                    </div>
-                  </div>
-                </Link>
-              </div>
-            )}
+      
+      <div className="row">
+        {this.state.courses.map((course, i) =>
+
+
+          <div key={i} className="card index-card col-md-4">
+            <Link to={`/courses/${course.id}`}><img className="card-img-top" src={course.imageSRC} alt="Card image cap" /></Link>
+            <div className="card-body">
+              <h4 className="card-title">{course.title}</h4>
+              <p className="card-text">{course.description}</p>
+            </div>
+            <Link className="btn btn-success" to={`/courses/${course.id}`}>Take this course </Link>
           </div>
-          <div className="col col-main col-md-6">
-            {this.state.courses.map((course, i) =>
-              <div key={i}>
-                <Link to={`/courses/${course.id}`}>
-                  <div className="card card-main card-custom bg-white border-white border-0">
-                    <img className="img-card" src={course.image} />
-                    <div className="card-custom-avatar">
-                      <img className="img-fluid" src="http://res.cloudinary.com/d3/image/upload/c_pad,g_center,h_200,q_auto:eco,w_200/bootstrap-logo_u3c8dx.jpg" alt="Avatar" />
-                    </div>
-                    <div className="card-body" >
-                      <p className="card-title">{course.title}</p>
-                      <h4 className="card-text">{course.description}</h4>
-                    </div>
-                  </div>
-                </Link>
-              </div>
-            )}
-          </div>
-          <div className="w-100"></div>
-          <div className="col col-main col-md-6">
-            {this.state.courses.map((course, i) =>
-              <div key={i}>
-                <Link to={`/courses/${course.id}`}>
-                  <div className="card card-main card-custom bg-white border-white border-0">
-                    <img className="img-card" src={course.image} />
-                    <div className="card-custom-avatar">
-                      <img className="img-fluid" src="http://res.cloudinary.com/d3/image/upload/c_pad,g_center,h_200,q_auto:eco,w_200/bootstrap-logo_u3c8dx.jpg" alt="Avatar" />
-                    </div>
-                    <div className="card-body" >
-                      <p className="card-title">{course.title}</p>
-                      <h4 className="card-text">{course.description}</h4>
-                    </div>
-                  </div>
-                </Link>
-              </div>
-            )}
-          </div>
-          <div className="col col-main col-md-6">
-            {this.state.courses.map((course, i) =>
-              <div key={i}>
-                <Link to={`/courses/${course.id}`}>
-                  <div className="card card-main card-custom bg-white border-white border-0">
-                    <img className="img-card" src={course.image} />
-                    <div className="card-custom-avatar">
-                      <img className="img-fluid" src="http://res.cloudinary.com/d3/image/upload/c_pad,g_center,h_200,q_auto:eco,w_200/bootstrap-logo_u3c8dx.jpg" alt="Avatar" />
-                    </div>
-                    <div className="card-body" >
-                      <p className="card-title">{course.title}</p>
-                      <h4 className="card-text">{course.description}</h4>
-                    </div>
-                  </div>
-                </Link>
-              </div>
-            )}
-          </div>
-        </div>
+
+        )}
       </div>
     );
   }

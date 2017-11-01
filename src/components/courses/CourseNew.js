@@ -10,8 +10,10 @@ class CourseNew extends React.Component {
     course: {
       title: '',
       image: '',
+      description: '',
       lessons: [],
-      tests: []
+      tests: [],
+      base64: ''
     },
     lessons: {
       stage: 1,
@@ -56,6 +58,14 @@ class CourseNew extends React.Component {
   handleOptionChange = ({ target: { name, value } }) => {
     const option = Object.assign({}, this.state.option, { [name]: value });
     this.setState({ option });
+  }
+
+
+  handleChange = ({ target: { name, value } }) => {
+    this.setState(prevState => {
+      const course = Object.assign({}, prevState.course, { [name]: value });
+      return { course };
+    });
   }
 
 
@@ -112,6 +122,7 @@ render() {
       handleTestChange={this.handleTestChange}
       handleOptionChange={this.handleOptionChange}
       addOption={this.addOption}
+      handleChange={this.handleChange}
     />
   );
 }

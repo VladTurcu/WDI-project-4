@@ -1,15 +1,17 @@
 const router = require('express').Router();
 const courses  = require('../controllers/courses');
 const auth  = require('../controllers/auth');
+const oauth  = require('../controllers/oauth');
 const secureRoute = require('../lib/secureRoute');
+const imageUpload = require('../lib/imageUpload');
 
 router.route('/courses')
   .get(courses.courseIndex)
-  .post(secureRoute, courses.courseCreate);
+  .post(imageUpload, secureRoute, courses.courseCreate);
 
 router.route('/courses/:id')
   .get(courses.courseShow)
-  .put(secureRoute, courses.courseUpdate)
+  .put(imageUpload, secureRoute, courses.courseUpdate)
   .delete(secureRoute, courses.courseDelete);
 
 router.route('/register')
@@ -29,6 +31,9 @@ router.route('/achievements')
 
 router.route('/users/:id')
   .put(secureRoute, auth.achievementUpdate);
+
+router.route('/oauth/facebook')
+  .post(oauth.facebook);
 
 router.all('/*', (req, res) => res.notFound());
 

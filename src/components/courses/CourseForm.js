@@ -1,38 +1,46 @@
 import React from 'react';
+import DragDrop from '../utility/DragDrop';
 
-function CourseForm({ handleSubmit, handleCourseChange, handleLessonChange, handleOptionChange, course, lessons, addLesson, handleTestChange, tests, addTest, addOption, state}) {
-
+function CourseForm({ handleChange, handleSubmit, handleCourseChange, handleLessonChange, handleOptionChange, course, lessons, addLesson, handleTestChange, tests, addTest, addOption, state}) {
 
   return (
     <div className="row">
       <form onSubmit={handleSubmit} className="col-md-6">
-
-        <div className={'form-group'}>
-          <input
-            type="text"
-            className="form-control"
-            id="title"
-            name="title"
-            placeholder="Title"
-            value={course.title}
-            onChange={handleCourseChange}
-          />
+        <div className="add-new">
+          <div className={'form-group'}>
+            <input
+              type="text"
+              className="form-control"
+              id="title"
+              name="title"
+              placeholder="Course Title"
+              value={course.title}
+              onChange={handleCourseChange}
+            />
+            <div className={'form-group'}>
+              <textarea
+                id="lesson"
+                type="text"
+                className="form-control"
+                name="description"
+                rows="8"
+                placeholder="Add Course Description"
+                value={course.description}
+                onChange={handleLessonChange}
+              ></textarea>
+            </div>
+          </div>
+          <div className={'form-group'}>
+            <div className="form-group">
+              <DragDrop
+                onChange={handleChange}
+                value={course.base64 || course.imageSRC} />
+            </div>
+          </div>
         </div>
-        <div className={'form-group'}>
 
-          <input
-            type="text"
-            className="form-control"
-            id="image"
-            name="image"
-            placeholder="Image"
-            value={course.image}
-            onChange={handleCourseChange}
-          />
-        </div>
 
-        <label>Lesson</label>
-        <div className="lesson-new">
+        <div className="add-new">
           <div className={'form-group'}>
             <input
               id="title"
@@ -53,6 +61,7 @@ function CourseForm({ handleSubmit, handleCourseChange, handleLessonChange, hand
               className="form-control"
               name="content"
               rows="8"
+              placeholder="Add Lesson Content"
               value={lessons.content}
               onChange={handleLessonChange}
             ></textarea>
@@ -79,8 +88,8 @@ function CourseForm({ handleSubmit, handleCourseChange, handleLessonChange, hand
           </div>
         </div>
 
-        <label htmlFor="category">Test</label>
-        <div className="lesson-new">
+
+        <div className="add-new">
           <div className={'form-group'}>
             <input
               id="question"
@@ -88,7 +97,7 @@ function CourseForm({ handleSubmit, handleCourseChange, handleLessonChange, hand
               className="form-control"
               name="question"
               rows="8"
-              placeholder="Test"
+              placeholder="Question"
               value={tests.question}
               onChange={handleTestChange}
             />
@@ -117,7 +126,9 @@ function CourseForm({ handleSubmit, handleCourseChange, handleLessonChange, hand
               value={state.option.item}
               onChange={handleOptionChange}
             />
-            <a className="btn btn-success" onClick={addOption}>+</a>
+            <div className="form-group">
+              <a className="btn btn-success" onClick={addOption}>Add Option</a>
+            </div>
           </div>
 
           <label htmlFor="stage">Stage</label>
@@ -142,26 +153,14 @@ function CourseForm({ handleSubmit, handleCourseChange, handleLessonChange, hand
         </div>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
         <div className="form-group">
-          <button  className="btn btn-primary">Save</button>
+          <button  className="btn btn-block btn-primary">Create Course</button>
         </div>
       </form>
 
       <div className="page-banner col-md-6">
         <h2>{course.title}</h2>
-        <img className="preview-img" src={course.image} />
+        <img className="preview-img" src={course.base64} />
         {course.lessons.map((item, i) =>
           <div key={i}>
             <h2>{item.title}</h2>

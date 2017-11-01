@@ -1,17 +1,20 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import ProtectedRoute from './components/utility/ProtectedRoute';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import CoursesIndex from './components/courses/CoursesIndex';
 import CoursesShow from './components/courses/CoursesShow';
 import CourseNew from './components/courses/CourseNew';
+import UserShow from './components/profile/UserShow';
 import Navbar from './components/utility/Navbar';
+import ReactDOM from 'react-dom';
 import Auth from './lib/Auth';
 import Axios from 'axios';
+import React from 'react';
 
-import Login from './components/auth/Login';
+
+// import Login from './components/auth/Login';
 
 import Register from './components/auth/Register';
-import 'bootstrap-only-css';
+import 'bootstrap-css-only';
 import './scss/style.scss';
 
 class App extends React.Component {
@@ -29,14 +32,19 @@ class App extends React.Component {
       <BrowserRouter>
         <div>
           <Navbar />
+          <div className="jumbotron jumbotron-fluid">
+            {!Auth.isAuthenticated() &&  <div className="col-md-4">
+            </div>}
+          </div>
 
           <main className="container">
             <Switch>
               <Route exact path="/" component={CoursesIndex} />
-              <Route exact path="/login" component={Login} />
+              <ProtectedRoute exact path="/courses/new" component={CourseNew} />
+              <ProtectedRoute exact path="/courses/:id" component={CoursesShow} />
+              <ProtectedRoute exact path="/profile/:id" component={UserShow} />
+              {/* <Route exact path="/" component={Login} /> */}
               <Route exact path="/register" component={Register} />
-              <Route exact path="/courses/new" component={CourseNew} />
-              <Route exact path="/courses/:id" component={CoursesShow} />
             </Switch>
           </main>
         </div>

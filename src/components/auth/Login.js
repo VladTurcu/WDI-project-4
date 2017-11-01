@@ -29,7 +29,7 @@ class Login extends React.Component {
       })
       .catch(() => {
         Auth.logout();
-        this.props.history.push('/login');
+        this.props.history.push('/');
       });
   }
 
@@ -41,8 +41,6 @@ class Login extends React.Component {
           handleChange={this.handleChange}
           handleSubmit={this.handleSubmit}
         />
-        {/* <OAuthButton provider="github">Login with Github</OAuthButton>
-        <OAuthButton provider="facebook">Login with Facebook</OAuthButton> */}
       </div>
     );
   }

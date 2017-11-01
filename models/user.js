@@ -9,12 +9,15 @@ const achievementSchema = new mongoose.Schema({
 
 
 const userSchema = new mongoose.Schema({
-  firstname: { type: String, required: true },
-  lastname: { type: String, required: true },
-  username: { type: String, required: true },
+  firstname: { type: String },
+  lastname: { type: String },
+  username: { type: String },
+  image: { type: String },
+  coverImage: { type: String, default: 'http://www.trendycovers.com/covers/color_your_life_facebook_cover_1345918363.jpg' },
   email: { type: String, required: true, unique: true },
-  password: { type: String, required: true },
+  password: { type: String },
   selectedAnswer: { type: String, required: false },
+  facebookId: {type: String },
   achievements: [achievementSchema]
 });
 

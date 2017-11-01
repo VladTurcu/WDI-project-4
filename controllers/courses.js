@@ -21,6 +21,7 @@ function courseShow(req, res, next) {
 }
 
 function courseCreate(req, res, next) {
+  if(req.file) req.body.image = req.file.filename;
   Course
     .create(req.body)
     .then(course => res.status(201).json(course))
@@ -28,6 +29,7 @@ function courseCreate(req, res, next) {
 }
 
 function courseUpdate(req, res, next) {
+  if(req.file) req.body.image = req.file.filename;
   Course
     .findById(req.params.id)
     .exec()
