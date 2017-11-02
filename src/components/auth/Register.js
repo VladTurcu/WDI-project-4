@@ -6,8 +6,6 @@ class Login extends React.Component {
 
   state = {
     user: {
-      firstname: '',
-      lastname: '',
       username: '',
       email: '',
       password: '',
@@ -25,7 +23,7 @@ class Login extends React.Component {
     e.preventDefault();
     Axios.post('/api/register', this.state.user)
       .then(() => {
-        this.props.history.push('/login');
+        this.props.history.push('/');
       })
       .catch((err) => this.setState({ errors: err.response.data.errors }));
   }

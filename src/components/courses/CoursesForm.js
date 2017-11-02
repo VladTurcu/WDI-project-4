@@ -1,7 +1,7 @@
 import React from 'react';
 import DragDrop from '../utility/DragDrop';
 
-function CourseForm({ handleChange, handleSubmit, handleCourseChange, handleLessonChange, handleOptionChange, course, lessons, addLesson, handleTestChange, tests, addTest, addOption, state}) {
+function CoursesForm({ handleChange, handleSubmit, handleCourseChange, handleLessonChange, handleOptionChange, course, lessons, addLesson, handleTestChange, tests, addTest, addOption, state}) {
 
   return (
     <div className="row">
@@ -26,19 +26,33 @@ function CourseForm({ handleChange, handleSubmit, handleCourseChange, handleLess
                 rows="8"
                 placeholder="Add Course Description"
                 value={course.description}
-                onChange={handleLessonChange}
+                onChange={handleCourseChange}
               ></textarea>
             </div>
-          </div>
-          <div className={'form-group'}>
-            <div className="form-group">
-              <DragDrop
-                onChange={handleChange}
-                value={course.base64 || course.imageSRC} />
+
+            <div className={'form-group'}>
+              <label>Select Dificulty</label>
+              <select
+                className="form-control"
+                id="lesson"
+                type="select"
+                name="level"
+                value={course.level}
+                onChange={handleCourseChange}
+              >
+                <option>Beginer</option>
+                <option>Intermediate</option>
+                <option>Advanced</option>
+              </select>
             </div>
           </div>
-        </div>
 
+          <div className="form-group">
+            <DragDrop
+              onChange={handleChange}
+              value={course.base64 || course.imageSRC} />
+          </div>
+        </div>
 
         <div className="add-new">
           <div className={'form-group'}>
@@ -187,4 +201,4 @@ function CourseForm({ handleChange, handleSubmit, handleCourseChange, handleLess
   );
 }
 
-export default CourseForm;
+export default CoursesForm;

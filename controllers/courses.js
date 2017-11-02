@@ -12,6 +12,7 @@ function courseIndex(req, res, next) {
 function courseShow(req, res, next) {
   Course
     .findById(req.params.id)
+    .populate('createdBy')
     .exec()
     .then((course) => {
       if(!course) return res.notFound();
@@ -21,6 +22,7 @@ function courseShow(req, res, next) {
 }
 
 function courseCreate(req, res, next) {
+  req.body.createdBy = req.currentUser;
   if(req.file) req.body.image = req.file.filename;
   Course
     .create(req.body)

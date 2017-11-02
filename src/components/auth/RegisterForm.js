@@ -1,31 +1,11 @@
 import React from 'react';
+import DragDrop from '../utility/DragDrop';
+const RegisterForm = ({ handleChange, handleSubmit, user, errors }) => {
 
-const LoginForm = ({ handleChange, handleSubmit, user, errors }) => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <div className="form-group">
-        <input
-          type="text"
-          name="firstname"
-          placeholder="First Name"
-          onChange={handleChange}
-          value={user.firstname}
-          className="form-control"
-        />
-        {errors.firstname && <small className="has-error">{errors.firstname}</small>}
-      </div>
-      <div className="form-group">
-        <input
-          type="text"
-          name="lastname"
-          placeholder="Last Name"
-          onChange={handleChange}
-          value={user.lastname}
-          className="form-control"
-        />
-        {errors.lastname && <small className="has-error">{errors.lastname}</small>}
-      </div>
+
       <div className="form-group">
         <input
           type="text"
@@ -37,6 +17,13 @@ const LoginForm = ({ handleChange, handleSubmit, user, errors }) => {
         />
         {errors.username && <small className="has-error">{errors.username}</small>}
       </div>
+
+      <div className="form-group">
+        <DragDrop
+          onChange={handleChange}
+          value={user.base64 || user.imageSRC} />
+      </div>
+
       <div className="form-group">
         <input
           type="text"
@@ -71,9 +58,9 @@ const LoginForm = ({ handleChange, handleSubmit, user, errors }) => {
         {errors.passwordConfirmation && <small className="has-error">{errors.passwordConfirmation}</small>}
       </div>
 
-      <button className="btn btn-primary">Login</button>
+      <button className="btn btn-block btn-primary">Register</button>
     </form>
   );
 };
 
-export default LoginForm;
+export default RegisterForm;

@@ -21,8 +21,11 @@ const courseSchema = new mongoose.Schema({
   category: { type: String, required: false },
   description: { type: String, required: false },
   lessons: [ lessonSchema ],
-  tests: [ testSchema ]
+  tests: [ testSchema ],
+  createdBy: { type: mongoose.Schema.ObjectId, ref: 'User'}
 });
+
+
 
 courseSchema
   .path('image')

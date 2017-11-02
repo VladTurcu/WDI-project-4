@@ -15,7 +15,7 @@ function login(req, res, next) {
     .then((user) => {
       if(!user || !user.validatePassword(req.body.password)) return res.status(401).json({ message: 'Unauthorized' });
       const token = jwt.sign({ userId: user.id }, secret, { expiresIn: '1hr' });
-      return res.json({ message: `Welcome back ${user.username}`, token });
+      return res.json({ message: `Welcome back ${user.username}`, token, user });
     })
     .catch(next);
 }
@@ -24,11 +24,11 @@ function login(req, res, next) {
 function userShow(req, res, next) {
   User
     .findById(req.currentUser.id)
+    .populate('courses') // add this
     .exec()
     .then((user) => {
       if(!user) return res.notFound();
       res.status(200).json(user);
-      console.log('user back >>', user);
     })
     .catch(next);
 }
@@ -38,6 +38,22 @@ function usersIndex(req, res, next) {
     .find()
     .exec()
     .then(users => res.json(users))
+    .catch(next);
+}
+
+
+
+function userUpdate(req, res, next) {
+  if(req.file) req.body.image = req.file.filename;
+  User
+    .findById(req.params.id)
+    .exec()
+    .then((user) => {
+      if(!user) return res.notFound();
+      user = Object.assign(user, req.body);
+      return user.save();
+    })
+    .then(user => res.json(user))
     .catch(next);
 }
 
@@ -76,6 +92,7 @@ module.exports = {
   login,
   usersIndex,
   userShow,
+  userUpdate,
   achievementCreate,
   achievementUpdate
 };

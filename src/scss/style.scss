@@ -31,14 +31,15 @@ main {
   @extend .border-radius;
 }
 
-.card-img-top {
+.profile-card .card-img-top {
   height: 150px;
 }
 
 
-.card-block {
-  width: 100%;
-  margin-top: -70px;
+
+.profile-card .card {
+  background-color: $background;
+  padding-top: 10px;
 }
 
 .profile-card-img{
@@ -48,7 +49,8 @@ main {
 }
 
 .lesson-content {
-  margin: 20px auto;
+  margin: 20px 0;
+  width: 100%;
 }
 
 .test-label {

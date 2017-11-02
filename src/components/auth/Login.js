@@ -2,6 +2,7 @@ import React from 'react';
 import LoginForm from './LoginForm';
 import Axios from 'axios';
 import Auth from '../../lib/Auth';
+import {withRouter } from 'react-router-dom';
 // import OAuthButton from './OAuthButton';
 
 class Login extends React.Component {
@@ -46,4 +47,4 @@ class Login extends React.Component {
   }
 }
 
-export default Login;
+export default withRouter(Login);

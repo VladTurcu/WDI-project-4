@@ -21,7 +21,9 @@ router.route('/login')
   .post(auth.login);
 
 router.route('/users/:id')
-  .get(secureRoute, auth.userShow);
+  .get(secureRoute, auth.userShow)
+  .put(secureRoute, auth.userUpdate)
+  .put(secureRoute, auth.achievementUpdate);
 
 router.route('/users')
   .get(auth.usersIndex);
@@ -29,8 +31,6 @@ router.route('/users')
 router.route('/achievements')
   .post(secureRoute, auth.achievementCreate);
 
-router.route('/users/:id')
-  .put(secureRoute, auth.achievementUpdate);
 
 router.route('/oauth/facebook')
   .post(oauth.facebook);

@@ -3,7 +3,6 @@ import Auth from '../../lib/Auth';
 import  AddAchievement from './achievements/AddAchievements';
 
 const CoursesShow = ({state}) => {
-  console.log('current user', Auth.currentUser);
   return(
     <div>
       <h1>Well done {Auth.currentUser.username}!</h1>

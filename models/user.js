@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
-
+const s3 = require('../lib/s3');
 
 const achievementSchema = new mongoose.Schema({
   course: { type: String, required: false },
@@ -9,16 +9,56 @@ const achievementSchema = new mongoose.Schema({
 
 
 const userSchema = new mongoose.Schema({
-  firstname: { type: String },
-  lastname: { type: String },
-  username: { type: String },
+  firstname: { type: String},
+  lastname: { type: String},
+  username: { type: String, required: true },
   image: { type: String },
   coverImage: { type: String, default: 'http://www.trendycovers.com/covers/color_your_life_facebook_cover_1345918363.jpg' },
   email: { type: String, required: true, unique: true },
   password: { type: String },
-  selectedAnswer: { type: String, required: false },
   facebookId: {type: String },
+  admin: {type: Boolean, default: false },
   achievements: [achievementSchema]
+});
+
+
+userSchema
+  .path('image')
+  .set(function getPreviousImage(image) {
+    this._image = this.image;
+    return image;
+  });
+
+userSchema
+  .virtual('imageSRC')
+  .get(function getImageSRC() {
+    if(!this.image) return null;
+    if(this.image.match(/^http/)) return this.image;
+    return `https://s3-eu-west-1.amazonaws.com/${process.env.AWS_BUCKET_NAME}/${this.image}`;
+  });
+
+userSchema.pre('save', function checkPreviousImage(next) {
+  if(this.isModified('image') && this._image && !this._image.match(/^http/)) {
+    return s3.deleteObject({ Key: this._image }, next);
+  }
+  next();
+});
+
+userSchema.pre('remove', function removeImage(next) {
+  if(this.image && !this.image.match(/^http/)) {
+    return s3.deleteObject({ Key: this.image }, next);
+  }
+  next();
+});
+
+
+
+
+
+userSchema.virtual('courses', {
+  ref: 'Course',
+  localField: '_id', // use the _id field from this schema
+  foreignField: 'createdBy' // to match up with the createdBy field in the Post schema
 });
 
 userSchema

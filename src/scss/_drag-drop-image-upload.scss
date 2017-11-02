@@ -11,7 +11,8 @@ div.drag-drop {
     min-height: 150px;
     width: 250px;
     background-image: url('https://cdn.colorlib.com/wp/wp-content/uploads/sites/2/jquery-file-upload-scripts.png');
-    background-size: contain;
+    background-repeat: no-repeat;
+    background-size: cover;
     @extend .box-shadow;
     @extend .border-radius;
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import { withRouter, Route, Redirect } from 'react-router-dom';
 import Auth from '../../lib/Auth';
+import Alert from './Alert';
 
 const ProtectedRoute = ({ component: Component, ...other }) => {
   return (
@@ -8,7 +9,11 @@ const ProtectedRoute = ({ component: Component, ...other }) => {
       Auth.isAuthenticated() ? (
         <Component {...props}/>
       ) : (
-        <Redirect to="/"/>
+        <div>
+
+          <Redirect to="/"/>
+          <Alert />
+        </div>
       )
     )}/>
   );

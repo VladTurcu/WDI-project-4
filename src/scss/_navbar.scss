@@ -12,7 +12,12 @@
   color: lighten($dark-grey, 25%);
   font-size: 24px;
   transition: 0.3s;
-  margin-left: 10px;
+  margin-left: 5px;
+  margin-right: 10px;
+}
+.sign .nav-item{
+  font-size: 18px;
+
 }
 .nav-item:hover{
   color: lighten($dark-grey, 35%);
@@ -24,7 +29,7 @@
   color: lighten($dark-grey, 35%);
 }
 
-.navbar-brand .row .col-md-4{
+.navbar-brand .row .col-md-4 .row{
   margin-left: 0rem;
   margin-right: 0rem;
 }
@@ -32,4 +37,14 @@
 .navbar .form-group {
   margin-bottom: 0rem;
   margin-top: 0rem;
+}
+
+.sign {
+  margin-right: 50px;
+}
+
+.dropdown-menu {
+  width: 300px;
+  padding: 10px;
+  margin-top: 20px;
 }

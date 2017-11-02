@@ -2,8 +2,9 @@ import ProtectedRoute from './components/utility/ProtectedRoute';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import CoursesIndex from './components/courses/CoursesIndex';
 import CoursesShow from './components/courses/CoursesShow';
-import CourseNew from './components/courses/CourseNew';
+import CoursesNew from './components/courses/CoursesNew';
 import UserShow from './components/profile/UserShow';
+import UserEdit from './components/profile/UserEdit';
 import Navbar from './components/utility/Navbar';
 import ReactDOM from 'react-dom';
 import Auth from './lib/Auth';
@@ -11,7 +12,8 @@ import Axios from 'axios';
 import React from 'react';
 
 
-// import Login from './components/auth/Login';
+
+import Login from './components/auth/Login';
 
 import Register from './components/auth/Register';
 import 'bootstrap-css-only';
@@ -40,10 +42,11 @@ class App extends React.Component {
           <main className="container">
             <Switch>
               <Route exact path="/" component={CoursesIndex} />
-              <ProtectedRoute exact path="/courses/new" component={CourseNew} />
+              <ProtectedRoute exact path="/courses/new" component={CoursesNew} />
               <ProtectedRoute exact path="/courses/:id" component={CoursesShow} />
               <ProtectedRoute exact path="/profile/:id" component={UserShow} />
-              {/* <Route exact path="/" component={Login} /> */}
+              <ProtectedRoute exact path="/profile/:id/edit" component={UserEdit} />
+              <Route exact path="/" component={Login} />
               <Route exact path="/register" component={Register} />
             </Switch>
           </main>

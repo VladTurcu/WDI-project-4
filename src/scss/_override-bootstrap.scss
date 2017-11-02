@@ -6,7 +6,7 @@
 }
 
 .form-group{
-  color: #ffffff;
+
   margin-top: 10px;
 }
 
@@ -20,7 +20,7 @@
   background-color: $sea-blu;
   border-color: transparent;
 }
-.btn-primary:active, .btn-primary:hover, .open>.btn-primary.dropdown-toggle {
+.btn-primary:active, .btn-primary:hover, .open>.btn-primary{
   color: #fff;
   background-color: lighten($sea-blu, 15%);
   box-shadow: none;
@@ -40,11 +40,16 @@
 }
 
 
-
 .jumbotron {
   background-image: url('http://hsbresort.com/wp-content/uploads/2014/05/texas-wine-country.jpg');
   background-position: center;
   background-size: cover;
   color: white;
   height: 250px;
+}
+
+
+
+.card-header, .card-footer {
+    background-color: $background;
 }

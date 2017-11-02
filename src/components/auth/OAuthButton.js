@@ -17,7 +17,10 @@ class OAuthButton extends React.Component {
 
     // send the code (and redirectUri) to the API
     Axios.post(this.provider.url, this.getData())
-      .then(res => Auth.setToken(res.data.token)) // store the token in localStorage (you are now 'logged in')
+      .then(res => {
+        Auth.setCurrentUser(res.data.user);
+        Auth.setToken(res.data.token);
+      }) // store the token in localStorage (you are now 'logged in')
       .then(() => localStorage.removeItem('provider')) // remove the chosen provider from localStorage
       .then(() => history.replace(location.pathname)) // remove the query string from the address bar
       .then(() => history.push('/')); // redirect to the home page

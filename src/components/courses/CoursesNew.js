@@ -2,7 +2,7 @@ import React from 'react';
 import Axios from 'axios';
 import Auth from '../../lib/Auth';
 
-import CourseForm from './CourseForm';
+import CoursesForm from './CoursesForm';
 
 class CourseNew extends React.Component {
 
@@ -11,6 +11,7 @@ class CourseNew extends React.Component {
       title: '',
       image: '',
       description: '',
+      level: '',
       lessons: [],
       tests: [],
       base64: ''
@@ -34,14 +35,6 @@ class CourseNew extends React.Component {
 
   };
 
-  componentWillMount() {
-    console.log('Component will mount');
-  }
-
-  componentDidMount() {
-    console.log('Component did mount');
-  }
-
   handleCourseChange = ({ target: { name, value } }) => {
     const course = Object.assign({}, this.state.course, { [name]: value });
     this.setState({ course });
@@ -59,7 +52,6 @@ class CourseNew extends React.Component {
     const option = Object.assign({}, this.state.option, { [name]: value });
     this.setState({ option });
   }
-
 
   handleChange = ({ target: { name, value } }) => {
     this.setState(prevState => {
@@ -104,10 +96,11 @@ addOption = () => {
 
 
 render() {
-  console.log('options >>', this.state.tests);
-  console.log('option >>', this.state.option.item);
+  console.log('level >>', this.state.course.level);
+  console.log('Description >>', this.state.course.description);
+
   return (
-    <CourseForm
+    <CoursesForm
       state={this.state}
       history={this.props.history}
       handleSubmit={this.handleSubmit}

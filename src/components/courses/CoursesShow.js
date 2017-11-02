@@ -3,7 +3,8 @@ import Axios from 'axios';
 import LessonShow from './lessons/LessonShow';
 import TestsShow from './tests/TestsShow';
 import CourseEnd from './CourseEnd';
-import ProfileCard from '../auth/ProfileCard';
+import ProfileCard from '../profile/ProfileCard';
+import Auth from '../../lib/Auth';
 
 
 class CoursesShow extends React.Component{
@@ -36,11 +37,10 @@ class CoursesShow extends React.Component{
     const prevLesson = this.state.course.lessons[this.state.lessonIndex - 1];
     const lessonIndex = this.state.lessonIndex + 1;
     if(!currentLesson ||  prevLesson && prevLesson.stage < currentLesson.stage) {
-      console.log('lesson index >>>', lessonIndex);
       this.setState({ lessonIndex });
       return this.getNextTest();
     }
-    console.log('setting lesson...');
+
     this.setState({ currentLesson, lessonIndex, currentTest: null, stage: currentLesson.stage });
   }
 
@@ -52,11 +52,6 @@ class CoursesShow extends React.Component{
   handleSelectAnswer = (answer) => {
     this.setState({ selectedAnswer: answer });
   }
-  // 
-  // handleClass = (i) => {
-  //   this.setState({ class: i });
-  //   console.log('this is the class >>', this.state.class);
-  // }
 
   testSubmit = () => {
     this.getNextLesson();
@@ -69,7 +64,7 @@ class CoursesShow extends React.Component{
 
 
   render(){
-
+    {this.state.course.createdBy && console.log('createdBYNow >> ',this.state.course.createdBy.firstname);}
     return(
       <div className="row">
         <div className="col-md-9">
@@ -96,7 +91,7 @@ class CoursesShow extends React.Component{
           {this.state.courseEnd && <CourseEnd state={this.state} />}
         </div>
         <div className="col-md-3">
-          <ProfileCard />
+          {this.state.course.createdBy && <ProfileCard course={this.state.course}/>}
         </div>
       </div>
     );
