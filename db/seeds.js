@@ -22,6 +22,20 @@ User.create([{
   courses: null,
   password: 'password',
   passwordConfirmation: 'password'
+}, {
+  firstname: 'Vlad',
+  lastname: 'TheImpaler',
+  username: 'Vlad TheImpaler',
+  email: 'gicuferentari@yahoo.it',
+  facebookId: '1945578189048579',
+  image: 'https://scontent.xx.fbcdn.net/v/t1.0-1/p200x200/23130570_1950268311912900_4044111797299733275_n.jpg?oh=2ea876f8549a6397085c3c077e357891&oe=5A9F7860',
+  achievements: [],
+  admin: false,
+  coverImage: 'http://www.trendycovers.com/covers/color_your_life_facebook_cover_1345918363.jpg',
+  imageSRC: 'https://scontent.xx.fbcdn.net/v/t1.0-1/p200x200/23130570_1950268311912900_4044111797299733275_n.jpg?oh=2ea876f8549a6397085c3c077e357891&oe=5A9F7860',
+  courses: null,
+  password: 'password',
+  passwordConfirmation: 'password'
 }])
 
 
@@ -85,8 +99,8 @@ User.create([{
         }, {
           stage: 3,
           question: 'How would you describe a dry wine?',
-          answer: 'A wine that has no traces of sweetnes',
-          options: ['A wine that leaves your muth dry', 'A wine that has high levelsof alcohol', 'A wine that is sweet', 'A wine that has no traces of sweetnes']
+          answer: 'A wine that has no traces of sweetness',
+          options: ['A wine that leaves your muth dry', 'A wine that has high levelsof alcohol', 'A wine that is sweet', 'A wine that has no traces of sweetness']
         }]
       },
       ////  course start  ////////////////////////////////////////////////////////////
