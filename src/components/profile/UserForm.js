@@ -37,7 +37,6 @@ const UserForm = ({ handleChange, handleSubmit, user, errors }) => {
           value={user.base64 || user.imageSRC} />
       </div>
 
-
       <button className="btn btn-block btn-primary">Update</button>
     </form>
   );

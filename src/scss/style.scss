@@ -35,8 +35,6 @@ main {
   height: 150px;
 }
 
-
-
 .profile-card .card {
   background-color: $background;
   padding-top: 10px;
@@ -62,4 +60,21 @@ main {
   width: 60%;
   padding:10px;
   @extend .border-radius;
+}
+
+.admin-main-container{
+  margin-top: 50px;
+}
+
+.admin-element-img{
+  width: 100px;
+  height:100px;
+}
+
+.admin-list .row {
+  margin-bottom: 10px;
+}
+
+.danger{
+color: red;
 }

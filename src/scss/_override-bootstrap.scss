@@ -41,7 +41,7 @@
 
 
 .jumbotron {
-  background-image: url('http://hsbresort.com/wp-content/uploads/2014/05/texas-wine-country.jpg');
+  background-image: url('https://images.fineartamerica.com/images-medium-large/3-beautiful-lush-grape-vineyard-in-the-morning-sun-and-mist-andy-dean.jpg');
   background-position: center;
   background-size: cover;
   color: white;
@@ -52,4 +52,14 @@
 
 .card-header, .card-footer {
     background-color: $background;
+}
+
+
+
+
+.card-header {
+     padding: 0;
+    margin-bottom: 0;
+    background-color: #f7f7f9;
+    border-bottom: 0;
 }

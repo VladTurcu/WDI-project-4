@@ -11,7 +11,8 @@ class Login extends React.Component {
     credentials: {
       email: '',
       password: ''
-    }
+    },
+    error: null
   };
 
   handleChange = ({ target: { name, value } }) => {
@@ -28,10 +29,7 @@ class Login extends React.Component {
         Auth.setCurrentUser(res.data.user);
         this.props.history.push('/');
       })
-      .catch(() => {
-        Auth.logout();
-        this.props.history.push('/');
-      });
+      .catch(() => this.setState({ error: 'Invalid Credentials'}));
   }
 
   render() {
@@ -41,6 +39,7 @@ class Login extends React.Component {
           credentials={this.state.credentials}
           handleChange={this.handleChange}
           handleSubmit={this.handleSubmit}
+          error={this.state.error}
         />
       </div>
     );

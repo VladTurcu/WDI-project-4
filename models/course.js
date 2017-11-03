@@ -20,6 +20,7 @@ const courseSchema = new mongoose.Schema({
   image: { type: String, required: true},
   category: { type: String, required: false },
   description: { type: String, required: false },
+  published: {type: Boolean, default: false},
   lessons: [ lessonSchema ],
   tests: [ testSchema ],
   createdBy: { type: mongoose.Schema.ObjectId, ref: 'User'}

@@ -4,7 +4,7 @@ import LessonShow from './lessons/LessonShow';
 import TestsShow from './tests/TestsShow';
 import CourseEnd from './CourseEnd';
 import ProfileCard from '../profile/ProfileCard';
-import Auth from '../../lib/Auth';
+// import Auth from '../../lib/Auth';
 
 
 class CoursesShow extends React.Component{

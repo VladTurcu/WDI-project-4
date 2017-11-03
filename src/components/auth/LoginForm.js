@@ -1,7 +1,7 @@
 import React from 'react';
 import OAuthButton from './OAuthButton';
 
-const LoginForm = ({ handleChange, handleSubmit, credentials }) => {
+const LoginForm = ({ handleChange, handleSubmit, credentials, error }) => {
   return (
     <div>
 
@@ -16,6 +16,9 @@ const LoginForm = ({ handleChange, handleSubmit, credentials }) => {
             className="form-control"
           />
         </div>
+        <div className="form-group danger">
+          {error && <small className="alert"><h6>{error}</h6></small>}
+        </div>
         <div className="form-group">
           <input
             type="password"
@@ -28,7 +31,7 @@ const LoginForm = ({ handleChange, handleSubmit, credentials }) => {
         </div>
         <div className="form-group">
           <OAuthButton provider="facebook"><i className="fa fa-facebook" aria-hidden="true"></i></OAuthButton>
-          <button className="btn is-primary">Login</button>
+          <button className="is-primary btn">Login</button>
         </div>
       </form>
     </div>

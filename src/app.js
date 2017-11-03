@@ -20,6 +20,8 @@ import 'bootstrap-css-only';
 import './scss/style.scss';
 
 class App extends React.Component {
+
+
   componentDidMount() {
     if(!Auth.getToken()) return false;
     Axios.get('/api/users/:id', {
@@ -28,15 +30,17 @@ class App extends React.Component {
       .then(res =>  Auth.setCurrentUser(res.data))
       .catch(err => console.log(err));
   }
+
+
   render() {
+
 
     return (
       <BrowserRouter>
         <div>
           <Navbar />
-          <div className="jumbotron jumbotron-fluid">
-            {!Auth.isAuthenticated() &&  <div className="col-md-4">
-            </div>}
+          <div className="jumbotron is-fluid">
+            <center><h1 className="display-2 home">Connoisseur</h1></center>
           </div>
 
           <main className="container">
@@ -44,7 +48,7 @@ class App extends React.Component {
               <Route exact path="/" component={CoursesIndex} />
               <ProtectedRoute exact path="/courses/new" component={CoursesNew} />
               <ProtectedRoute exact path="/courses/:id" component={CoursesShow} />
-              <ProtectedRoute exact path="/profile/:id" component={UserShow} />
+              <Route exact path="/profile/:id" component={UserShow} />
               <ProtectedRoute exact path="/profile/:id/edit" component={UserEdit} />
               <Route exact path="/" component={Login} />
               <Route exact path="/register" component={Register} />

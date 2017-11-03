@@ -1,7 +1,7 @@
 import React from 'react';
 import Axios from 'axios';
 import Auth from '../../lib/Auth';
-
+import AdminList from './AdminList';
 
 
 class CoursesShow extends React.Component{
@@ -24,16 +24,33 @@ class CoursesShow extends React.Component{
   render(){
     return(
       <div>
-
         {Auth.isAuthenticated() &&
           <div>
-            <h1>{this.state.user.username}</h1>
-            <img src={this.state.user.imageSRC} />
+            <div className="card text-center">
+              <div className="card-header">
+              </div>
+
+              <div className="card-block">
+
+                <div className="row">
+                  <div className="col-sm-4">
+                    <img src={this.state.user.imageSRC} className="rounded mx-auto d-block img-thumbnail" alt={this.state.user.username} />
+                  </div>
+                  <div className="col-sm-8">
+                    <h3 className="card-title">{this.state.user.username}</h3>
+                    <div className="card-text">
+                      <hr />
+                      {this.state.user.admin && <p>You are the administrator of this website</p>}
+                      {!this.state.user.admin && <p>Nothing to see for now</p>}</div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
           </div>
         }
-        {this.state.user.admin && <h1>You are admin of thi website</h1>}
-        {!this.state.user.admin && <h1>You are not admin of this website</h1>}
 
+        {this.state.user.admin && <AdminList />}
       </div>
     );
   }

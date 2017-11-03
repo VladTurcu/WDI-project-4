@@ -42,7 +42,7 @@ class OAuthButton extends React.Component {
   render() {
     return (
       <a
-        className="nav-item"
+        className="nav-item btn is-primary"
         href={this.provider.authLink}
         onClick={this.setProvider}
       >

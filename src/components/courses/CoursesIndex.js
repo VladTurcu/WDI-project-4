@@ -16,7 +16,7 @@ class CoursesIndex extends React.Component {
 
   render() {
     return (
-      
+
       <div className="row">
         {this.state.courses.map((course, i) =>
 
@@ -25,7 +25,7 @@ class CoursesIndex extends React.Component {
             <Link to={`/courses/${course.id}`}><img className="card-img-top" src={course.imageSRC} alt="Card image cap" /></Link>
             <div className="card-body">
               <h4 className="card-title">{course.title}</h4>
-              <p className="card-text">{course.description}</p>
+              <p className="card-text">{course.description.substring(0, 150)}</p>
             </div>
             <Link className="btn btn-success" to={`/courses/${course.id}`}>Take this course </Link>
           </div>

@@ -22,7 +22,8 @@ router.route('/login')
 
 router.route('/users/:id')
   .get(secureRoute, auth.userShow)
-  .put(secureRoute, auth.userUpdate)
+  .put(imageUpload, secureRoute, auth.userUpdate)
+  .delete(secureRoute, auth.userDelete)
   .put(secureRoute, auth.achievementUpdate);
 
 router.route('/users')

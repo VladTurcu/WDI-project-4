@@ -24,9 +24,10 @@ function login(req, res, next) {
 function userShow(req, res, next) {
   User
     .findById(req.currentUser.id)
-    .populate('courses') // add this
+    .populate('courses')
     .exec()
     .then((user) => {
+      console.log('controller user >>>', user);
       if(!user) return res.notFound();
       res.status(200).json(user);
     })
@@ -41,8 +42,6 @@ function usersIndex(req, res, next) {
     .catch(next);
 }
 
-
-
 function userUpdate(req, res, next) {
   if(req.file) req.body.image = req.file.filename;
   User
@@ -56,6 +55,21 @@ function userUpdate(req, res, next) {
     .then(user => res.json(user))
     .catch(next);
 }
+
+
+
+function userDelete(req, res, next) {
+  User
+    .findById(req.params.id)
+    .exec()
+    .then((user) => {
+      if(!user) return res.notFound();
+      return user.remove();
+    })
+    .then(() => res.status(204).end())
+    .catch(next);
+}
+
 
 
 function achievementCreate(req, res, next) {
@@ -93,6 +107,7 @@ module.exports = {
   usersIndex,
   userShow,
   userUpdate,
+  userDelete,
   achievementCreate,
   achievementUpdate
 };

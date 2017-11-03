@@ -15,7 +15,7 @@ const RegisterForm = ({ handleChange, handleSubmit, user, errors }) => {
           value={user.username}
           className="form-control"
         />
-        {errors.username && <small className="has-error">{errors.username}</small>}
+        {errors.username && <small className="has-error alert alert-danger">{errors.username}</small>}
       </div>
 
       <div className="form-group">
@@ -33,7 +33,7 @@ const RegisterForm = ({ handleChange, handleSubmit, user, errors }) => {
           value={user.email}
           className="form-control"
         />
-        {errors.email && <small className="has-error">{errors.email}</small>}
+        {errors.email && <small className="has-error alert alert-danger">{errors.email}</small>}
       </div>
       <div className="form-group">
         <input
@@ -44,7 +44,7 @@ const RegisterForm = ({ handleChange, handleSubmit, user, errors }) => {
           value={user.password}
           className="form-control"
         />
-        {errors.password && <small className="has-error">{errors.password}</small>}
+        {errors.password && <small className="has-error alert alert-danger">{errors.password}</small>}
       </div>
       <div className="form-group">
         <input
@@ -55,7 +55,7 @@ const RegisterForm = ({ handleChange, handleSubmit, user, errors }) => {
           value={user.passwordConfirmation}
           className="form-control"
         />
-        {errors.passwordConfirmation && <small className="has-error">{errors.passwordConfirmation}</small>}
+        {errors.passwordConfirmation && <small className="has-error alert alert-danger">{errors.passwordConfirmation}</small>}
       </div>
 
       <button className="btn btn-block btn-primary">Register</button>

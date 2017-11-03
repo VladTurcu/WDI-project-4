@@ -9,7 +9,8 @@ class UserEdit extends React.Component {
     user: {
       username: '',
       email: '',
-      base64: ''
+      base64: '',
+      coverImage: ''
     },
     errors: {}
   };

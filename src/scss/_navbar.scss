@@ -8,6 +8,10 @@
   font-size: 34px;
   transition: 0.3s;
 }
+.home{
+font-family: 'Montez', cursive;
+}
+
 .nav-item{
   color: lighten($dark-grey, 25%);
   font-size: 24px;
@@ -25,7 +29,7 @@
 .navbar-brand:hover{
   color: lighten($dark-grey, 35%);
 }
-.navbar-brand .active{
+.navbar-brand .current{
   color: lighten($dark-grey, 35%);
 }
 

@@ -12,7 +12,7 @@ const userSchema = new mongoose.Schema({
   firstname: { type: String},
   lastname: { type: String},
   username: { type: String, required: true },
-  image: { type: String },
+  image: { type: String, required: true },
   coverImage: { type: String, default: 'http://www.trendycovers.com/covers/color_your_life_facebook_cover_1345918363.jpg' },
   email: { type: String, required: true, unique: true },
   password: { type: String },
