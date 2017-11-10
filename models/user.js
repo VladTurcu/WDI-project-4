@@ -7,7 +7,6 @@ const achievementSchema = new mongoose.Schema({
   score: { type: String, required: false }
 });
 
-
 const userSchema = new mongoose.Schema({
   firstname: { type: String},
   lastname: { type: String},
@@ -20,7 +19,6 @@ const userSchema = new mongoose.Schema({
   admin: {type: Boolean, default: false },
   achievements: [achievementSchema]
 });
-
 
 userSchema
   .path('image')
@@ -50,10 +48,6 @@ userSchema.pre('remove', function removeImage(next) {
   }
   next();
 });
-
-
-
-
 
 userSchema.virtual('courses', {
   ref: 'Course',

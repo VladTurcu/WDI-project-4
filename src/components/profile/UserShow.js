@@ -20,7 +20,6 @@ class CoursesShow extends React.Component{
       });
   }
 
-
   render(){
     return(
       <div>
@@ -29,9 +28,7 @@ class CoursesShow extends React.Component{
             <div className="card text-center">
               <div className="card-header">
               </div>
-
               <div className="card-block">
-
                 <div className="row">
                   <div className="col-sm-4">
                     <img src={this.state.user.imageSRC} className="rounded mx-auto d-block img-thumbnail" alt={this.state.user.username} />
